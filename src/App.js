@@ -14,20 +14,18 @@ function Captcha() {
   const [isCaptchaVisible, setIsCaptchaVisible] = useState(false);
   const [correctImage, setCorrectImage] = useState(null);
 
-  // Function to handle the button click to show CAPTCHA
   const showCaptcha = () => {
     setIsCaptchaVisible(true);
     setCorrectImage(Math.floor(Math.random() * 6) + 1); // Random number between 1 and 6
   };
 
-  // Function to handle image click
   const handleImageClick = (index) => {
     if (index + 1 === correctImage) {
-      alert("Correct! Resetting CAPTCHA.");
+      alert("Doğru! CAPTCHA sıfırlanıyor");
       setIsCaptchaVisible(false);
       setCorrectImage(null);
     } else {
-      alert("Incorrect, please try again!");
+      alert("Hatalı seçim, lütfen tekrar deneyin");
     }
   };
 
@@ -38,14 +36,12 @@ function Captcha() {
           className="p-4 w-full bg-red-800 text-white rounded-lg mb-5"
           onClick={showCaptcha}
         >
-          Show CAPTCHA
+          CAPTCHA GÖSTER
         </button>
       )}
       {isCaptchaVisible && (
         <div>
-          <p className="text-center mb-4">
-            Please select image number {correctImage}
-          </p>
+          <p className="text-center mb-4">Lütfen {correctImage} seçiniz</p>
           <div className="grid grid-cols-3 gap-6">
             {images.map((src, index) => (
               <img
